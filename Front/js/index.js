@@ -21,6 +21,8 @@ function validarVacios(){
         sexo = "";
     }
 
+    
+
     let cedulaC = document.getElementById("CedulaC")
     let nombreC = document.getElementById("NombreC")
     let emailC = document.getElementById("EmailC")
@@ -35,7 +37,15 @@ function validarVacios(){
     let AlertClase = document.getElementsByClassName("")
     let AlertaEdad = document.getElementById("AlertaEdad")
     let AlertaCedula = document.getElementById("AlertaCedula")
-
+    let AlertaEmail = document.getElementById("AlertaEmail")
+    let var1 = 0;
+    let var2 = 1;
+    let confirmarEmail = 0;
+    let confirmarPunto = 0;
+    let fechaDeNacimiento = new Date(edad);
+    let hoy = new Date();
+    let edadN = parseInt((hoy - fechaDeNacimiento) / (1000*60*60*24*365));
+    
 
     if(cedula == "" || nombre == "" || email == "" ||
     direccion == "" || contraseña == "" || contraseña2 == "" ||
@@ -66,7 +76,35 @@ function validarVacios(){
         if(email ==""){
             emailC.className="form-control is-invalid";
         }else{
-            emailC.className="form-control";
+            emailC.className="form-control"
+            for(i = 0 ; i < email.length; i++){
+    
+                var confirmar = email.substring(var1,var2);  
+                var1 += 1;
+                var2 += 1;
+            
+                if (confirmar == "@"){
+                    confirmarEmail +=1; 
+                }
+        
+                if (confirmar == "."){
+              confirmarPunto +=1; 
+                }
+            }if(confirmarEmail!=1 || confirmarPunto<1){
+        
+                    emailC.className="form-control is-invalid";
+                    AlertaEmail.style.display="inline"
+                    AlertaEmail.innerHTML="";
+                    let alertaEm = document.createElement("div") 
+                    alertaEm.innerHTML="";
+                    alertaEm.innerHTML = '<div class="alert alert-danger alert-dismissible" role="alert">El Email no es Valido<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+                    AlertaEmail.append(alertaEm)
+        
+                }else{
+                    emailC.className="form-control"
+                    AlertaEmail.innerHTML="";
+                    AlertaEmail.style.display="none"
+                }
         }
 
         if(direccion ==""){
@@ -89,7 +127,7 @@ function validarVacios(){
             edadC.className="form-control is-invalid";
 
         }else{
-            if(edad<15){
+            if(edadN<15){
                 edadC.className="form-control is-invalid";
                 AlertaEdad.style.display="inline"
                 AlertaEdad.innerHTML="";
@@ -137,6 +175,39 @@ function validarVacios(){
             cedulaC.className="form-control is-invalid";
         }else{
             cedulaC.className="form-control";
+        }
+
+        
+        console.log("ejecutar confirmar");
+         for(i = 0 ; i < email.length; i++){
+    
+        var confirmar = email.substring(var1,var2);  
+        var1 += 1;
+        var2 += 1;
+    
+        if (confirmar == "@"){
+            confirmarEmail +=1; 
+        }
+
+        if (confirmar == "."){
+      confirmarPunto +=1; 
+        }
+    }
+  
+
+        if(confirmarEmail!=1 || confirmarPunto<1){
+
+            emailC.className="form-control is-invalid";
+            AlertaEmail.style.display="inline"
+            AlertaEmail.innerHTML="";
+            let alertaEm = document.createElement("div") 
+            alertaEm.innerHTML="";
+            alertaEm.innerHTML = '<div class="alert alert-danger alert-dismissible" role="alert">El Email no es Valido<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+            AlertaEmail.append(alertaEm)
+
+        }else{
+            emailC.className="form-control"
+
         }
 
         if(contraseña.length < 6 ){
@@ -187,6 +258,7 @@ function validarVacios(){
         let alertaCrear = document.getElementById("AlertaCrear")
         alertaCrear.innerHTML="";
         alert("pero que ha pasao")
+        guardarUsuario();
         }
     }
 
@@ -214,16 +286,90 @@ function validarVaciosLog(){
         alertaLog.appendChild(alertaC)
 
     }
-}
-    function verEmail() {
-    
-    
-        if(!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email)){
-        alert("PORONGAA")
-    }else{
-        alert("PORON");
+    else{
+        ingreso();
+
     }
+}
+    
+function ingreso(){
 
+    let email = $("#email").val();
+    let contraseña = $("#contraseña").val();
+    let confirmar = false;
 
+    $.ajax({    
+
+        url: 'http://localhost:8080/api/Usuarios/all',
+        
+        type: 'GET',
+        dataType : 'JSON',
+        contentType:'application/json',
+        
+        
+        success : function(json, textStatus, xhr) {
+            
+            for(i = 0; i< json.length; i++){
+                
+                if(email == json.email[i] ){
+                    if(contraseña == json.contraseña[i]){
+                        location.href= "http://localhost:8080/pagPrueba.html"
+                        
+                    }
+
+                }
+
+            }    
+},
+        
+                complete : function(xhr, status) {
+                //alert('Petición realizada '+xhr.status);
+    
+    
+            }
+    });
+}
+
+function guardarUsuario(){
+    let edad= $("#Edad").val()
+    
+    let fechaDeNacimiento = new Date(edad);
+    let hoy = new Date();
+    let edadN = parseInt((hoy - fechaDeNacimiento) / (1000*60*60*24*365));
+    
+
+    let var2 = {
+        cedula: $("#CedulaC").val(),
+        nombre: $("#NombreC").val(),
+        email: $("#EmailC").val(),
+        direccion: $("#DireccionC").val(),
+        contraseña: $("#contraseñaC").val(),
+        edad: edadN,
+        sexo: $("#Sexo").val(),
+        localidad: $("#Localidad").val(),
+        ocupacion: $("#Ocupacion").val()
+        
+    };
+    
+    $.ajax({
+        type:'POST',
+        contentType:"application/json; charset=utf-8",
+        dataType: 'JSON',
+        data: JSON.stringify(var2),
+        url:"http://localhost:8080/api/Usuarios/new",
+        success:function() {
+            alert("Guardó correctamente");
+                let modal = document.getElementById("staticBackdrop");
+                 modal.style.display="none";
+
+                 $('.modal-backdrop').remove();
+
+        },
+        error:function(){
+            
+            
+            alert("No se guardó correctamente");
+        }
+    });
 
 }
