@@ -14,6 +14,10 @@ public class OpinionUsuarioRepositorio {
     @Autowired
     private OpinionUsuarioCrudRepositorio opinionUsuarioCrudRepositorio;
 
+    public List<OpinionUsuarios> getOpinionUsuarios() {
+        return (List<OpinionUsuarios>) opinionUsuarioCrudRepositorio.findAll();
+    }
+
     public List<OpinionCompleta> getAll() {
         return opinionUsuarioCrudRepositorio.getAll();
     }

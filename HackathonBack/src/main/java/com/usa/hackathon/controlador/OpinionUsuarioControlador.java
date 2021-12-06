@@ -1,6 +1,7 @@
 package com.usa.hackathon.controlador;
 
 import com.usa.hackathon.modelo.OpinionCompleta;
+import com.usa.hackathon.modelo.OpinionUsuarios;
 import com.usa.hackathon.servicios.ServicioOpinionUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,8 @@ public class OpinionUsuarioControlador {
     private ServicioOpinionUsuario servicioOpinionUsuario;
 
     @GetMapping("/all")
-    public List<OpinionCompleta> getAll() {
-        return servicioOpinionUsuario.getAll();
+    public List<OpinionUsuarios> getOpinionUsuarios() {
+        return servicioOpinionUsuario.getOpinionUsuarios();
     }
 
     @GetMapping("/{idOpinionUsuario}")

@@ -22,6 +22,10 @@ public class ServicioOpinionUsuario {
     @Autowired
     private OpinionRepositorio opinionRepositorio;
 
+    public List<OpinionUsuarios> getOpinionUsuarios() {
+        return opinionUsuarioRepositorio.getOpinionUsuarios();
+    }
+
     public List<OpinionCompleta> getAll() {
         return opinionUsuarioRepositorio.getAll();
     }
@@ -39,15 +43,10 @@ public class ServicioOpinionUsuario {
         opinion.setRecomendacion(opinionCompleta.getRecomendacion());
         opinion.setFecha("" + dateFormat.format(date));
         opinionRepositorio.guardar(opinion);
-        System.out.println(opinion.getIdOpinion() + " " + opinion.getOpinion() + " " + opinion.getCalificacion() + " " + opinion.getRecomendacion() + " " + opinion.getFecha());
-
         OpinionUsuarios opinionUsuarios = new OpinionUsuarios();
-
         opinionUsuarios.setIdUsuario(opinionCompleta.getIdUsuario());
         opinionUsuarios.setIdOpinion(opinion.getIdOpinion());
-        System.out.println(opinionUsuarios.getIdOpinion() + "" + opinionUsuarios.getIdUsuario());
         opinionUsuarioRepositorio.guardar(opinionUsuarios);
-
         opinionCompleta.setIdOpinion(opinion.getIdOpinion());
         return opinionCompleta;
     }
