@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Opinion")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class OpinionControlador {
 
     @Autowired
@@ -22,8 +22,8 @@ public class OpinionControlador {
         return servicioOpinion.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Opinion> getOpinion(@PathVariable("id") int idOpinion) {
+    @GetMapping("/{idOpinion}")
+    public Optional<Opinion> getOpinion(@PathVariable("idOpinion") int idOpinion) {
         return servicioOpinion.getOpinion(idOpinion);
     }
 
@@ -31,18 +31,6 @@ public class OpinionControlador {
     @ResponseStatus(HttpStatus.CREATED)
     public Opinion guardar(@RequestBody Opinion opinion) {
         return servicioOpinion.guardar(opinion);
-    }
-
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Opinion actualizar(@RequestBody Opinion opinion) {
-        return servicioOpinion.actualizar(opinion);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean borrar(@PathVariable("id") int idOpinion) {
-        return servicioOpinion.borrarOpinion(idOpinion);
     }
 
 }

@@ -26,8 +26,4 @@ public class OpinionRepositorio {
         return opinionCrudRepositorio.save(opinion);
     }
 
-    public void borrar(Opinion opinion) {
-        opinionCrudRepositorio.delete(opinion);
-    }
-
 }

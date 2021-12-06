@@ -35,35 +35,4 @@ public class ServicioOpinion {
         }
     }
 
-    public Opinion actualizar(Opinion opinion) {
-        if (opinion.getIdOpinion() != null) {
-            Optional<Opinion> o = opinionRepositorio.getOpinion(opinion.getIdOpinion());
-            if (!o.isEmpty()) {
-                if (opinion.getOpinion() != null) {
-                    o.get().setOpinion(opinion.getOpinion());
-                }
-                if (opinion.getCalificacion() != null) {
-                    o.get().setCalificacion(opinion.getCalificacion());
-                }
-                if (opinion.getRecomendacion() != null) {
-                    o.get().setRecomendacion(opinion.getRecomendacion());
-                }
-                opinionRepositorio.guardar(o.get());
-                return o.get();
-            } else {
-                return opinion;
-            }
-        } else {
-            return opinion;
-        }
-    }
-
-    public boolean borrarOpinion(int idOpinion) {
-        Boolean aBoolean = getOpinion(idOpinion).map(opinion -> {
-            opinionRepositorio.borrar(opinion);
-            return true;
-        }).orElse(false);
-        return aBoolean;
-    }
-
 }

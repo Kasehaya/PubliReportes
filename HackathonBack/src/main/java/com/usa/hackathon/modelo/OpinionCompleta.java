@@ -9,13 +9,9 @@ public class OpinionCompleta {
     private String opinion;
     private int calificacion;
     private String recomendacion;
-    private Date fecha;
+    private String fecha;
 
-    public OpinionCompleta() {
-
-    }
-
-    public OpinionCompleta (int idUsuario, int idOpinion, int idRuta, String opinion, int calificacion, String recomendacion, Date fecha) {
+    public OpinionCompleta (int idUsuario, int idOpinion, String opinion, int calificacion, String recomendacion, String fecha) {
         this.idUsuario = idUsuario;
         this.idOpinion = idOpinion;
         this.opinion = opinion;
@@ -64,11 +60,11 @@ public class OpinionCompleta {
         this.recomendacion = recomendacion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

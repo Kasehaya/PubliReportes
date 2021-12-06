@@ -1,10 +1,7 @@
 package com.usa.hackathon.modelo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name = "opinion")
@@ -16,7 +13,7 @@ public class Opinion implements Serializable {
     private String opinion;
     private Integer calificacion;
     private String recomendacion;
-    private Date fecha;
+    private String fecha;
 
     public Integer getIdOpinion() {
         return idOpinion;
@@ -50,11 +47,11 @@ public class Opinion implements Serializable {
         this.recomendacion = recomendacion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

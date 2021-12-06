@@ -10,18 +10,8 @@ public class OpinionUsuarios implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOp;
-
     private Integer idUsuario;
-
     private Integer idOpinion;
-
-    public Integer getIdOp() {
-        return idOp;
-    }
-
-    public void setIdOp(Integer idOp) {
-        this.idOp = idOp;
-    }
 
     public Integer getIdUsuario() {
         return idUsuario;
