@@ -1,7 +1,5 @@
 package com.usa.hackathon.modelo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,24 +8,34 @@ import java.io.Serializable;
 public class OpinionUsuarios implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOp;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    @JsonIgnoreProperties({"usuario"})
-    private Usuario usuario;
+    private Integer idUsuario;
 
-    @ManyToOne
-    @JoinColumn(name = "idOpinion")
-    @JsonIgnoreProperties({"opinion"})
-    private Opinion opinion;
+    private Integer idOpinion;
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Integer getIdOp() {
+        return idOp;
     }
 
-    public Opinion getOpinion() {
-        return opinion;
+    public void setIdOp(Integer idOp) {
+        this.idOp = idOp;
     }
 
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Integer getIdOpinion() {
+        return idOpinion;
+    }
+
+    public void setIdOpinion(Integer idOpinion) {
+        this.idOpinion = idOpinion;
+    }
 }

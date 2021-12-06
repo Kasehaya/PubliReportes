@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/Usuarios")
+@RequestMapping("/api/usuarios")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class UsuarioControlador {
 
@@ -40,7 +40,7 @@ public class UsuarioControlador {
         return servicioUsuario.actualizar(usuario);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/updateEstado")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario actualizarEstado(@RequestBody Usuario usuario) {
         return servicioUsuario.actualizarEstado(usuario);

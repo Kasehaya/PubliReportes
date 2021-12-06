@@ -84,6 +84,8 @@ public class ServicioUsuario {
             if (!u.isEmpty()) {
                 if (usuario.getEstado() == "Activo") {
                     u.get().setEstado("Inactivo");
+                } else {
+                    u.get().setEstado("Activo");
                 }
                 usuarioRepositorio.guardar(u.get());
                 return u.get();

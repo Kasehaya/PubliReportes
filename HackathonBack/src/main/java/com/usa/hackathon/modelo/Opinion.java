@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Table(name = "opinion")
@@ -16,10 +16,7 @@ public class Opinion implements Serializable {
     private String opinion;
     private Integer calificacion;
     private String recomendacion;
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "opinion")
-    @JsonIgnoreProperties({"opinion"})
-    private List<OpinionUsuarios> opinionUsuarios;
+    private Date fecha;
 
     public Integer getIdOpinion() {
         return idOpinion;
@@ -53,12 +50,12 @@ public class Opinion implements Serializable {
         this.recomendacion = recomendacion;
     }
 
-    public List<OpinionUsuarios> getOpinionUsuarios() {
-        return opinionUsuarios;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setOpinionUsuarios(List<OpinionUsuarios> opinionUsuarios) {
-        this.opinionUsuarios = opinionUsuarios;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
 }

@@ -23,10 +23,6 @@ public class Usuario implements Serializable {
     private String localidad;
     private String ocupacion;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "usuario")
-    @JsonIgnoreProperties({"usuario"})
-    private List<OpinionUsuarios> opinionUsuarios;
-
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -113,14 +109,6 @@ public class Usuario implements Serializable {
 
     public void setOcupacion(String ocupacion) {
         this.ocupacion = ocupacion;
-    }
-
-    public List<OpinionUsuarios> getOpinionUsuarios() {
-        return opinionUsuarios;
-    }
-
-    public void setOpinionUsuarios(List<OpinionUsuarios> opinionUsuarios) {
-        this.opinionUsuarios = opinionUsuarios;
     }
 
 }

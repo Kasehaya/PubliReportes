@@ -1,15 +1,18 @@
 package com.usa.hackathon.repositoriocrud;
 
+import com.usa.hackathon.modelo.OpinionCompleta;
 import com.usa.hackathon.modelo.OpinionUsuarios;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface OpinionUsuarioCrudRepositorio extends CrudRepository<OpinionUsuarios, Integer> {
 
-    @Query("SELECT ou.id_op, ou.id_usuario, u.nombre, u.email,o.opinion, o.calificacion, o.recomendacion FROM hackathon.opinion_usuarios ou LEFT JOIN usuarios u ON ou.id_usuario = u.id_usuario LEFT JOIN opiniones o ON ou.id_opinion = o.id_opinion")
-    OpinionUsuarios getAll();
+    @Query(value = "SELECT u.id_usuario, o.id_opinion, o.opinion, o.calificacion, o.recomendacion, o.fecha FROM opinionusuarios ou LEFT JOIN usuario u ON ou.id_usuario = u.id_usuario LEFT JOIN opinion o ON ou.id_opinion = o.id_opinion;", nativeQuery = true)
+    public List<OpinionCompleta> getAll();
 
-    @Query("SELECT ou.id_op, ou.id_usuario, u.nombre, u.email,o.opinion, o.calificacion, o.recomendacion FROM hackathon.opinion_usuarios ou LEFT JOIN usuarios u ON ou.id_usuario = u.id_usuario LEFT JOIN opiniones o ON ou.id_opinion = o.id_opinion WHERE ou.id_usuario = ?1;")
-    OpinionUsuarios findByCedula(int idUsuario);
+    @Query(value = "SELECT u.id_usuario, o.id_opinion, o.opinion, o.calificacion, o.recomendacion, o.fecha FROM opinionusuarios ou LEFT JOIN usuario u ON ou.id_usuario = u.id_usuario LEFT JOIN opinion o ON ou.id_opinion = o.id_opinion WHERE ou.id_usuario = ?;", nativeQuery = true)
+    public List<OpinionCompleta> findByCedula(int idUsuario);
 
 }
