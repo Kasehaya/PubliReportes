@@ -1,5 +1,7 @@
 package com.usa.hackathon.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,23 +11,38 @@ public class ParaderoRuta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPr;
-    private Integer idRuta;
-    private Integer idParada;
 
-    public Integer getIdRuta() {
-        return idRuta;
+    @ManyToOne
+    @JoinColumn(name = "idRuta")
+    @JsonIgnoreProperties({"paraderoruta"})
+    private Ruta ruta;
+
+    @ManyToOne
+    @JoinColumn(name = "idParadero")
+    @JsonIgnoreProperties({"paraderoruta"})
+    private Paradero paradero;
+
+    public Integer getIdPr() {
+        return idPr;
     }
 
-    public void setIdRuta(Integer idRuta) {
-        this.idRuta = idRuta;
+    public void setIdPr(Integer idPr) {
+        this.idPr = idPr;
     }
 
-    public Integer getIdParada() {
-        return idParada;
+    public Ruta getRuta() {
+        return ruta;
     }
 
-    public void setIdParada(Integer idParada) {
-        this.idParada = idParada;
+    public void setRuta(Ruta ruta) {
+        this.ruta = ruta;
     }
 
+    public Paradero getParadero() {
+        return paradero;
+    }
+
+    public void setParadero(Paradero paradero) {
+        this.paradero = paradero;
+    }
 }

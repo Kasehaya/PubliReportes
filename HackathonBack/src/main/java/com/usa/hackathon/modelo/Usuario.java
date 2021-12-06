@@ -11,7 +11,6 @@ import java.util.List;
 public class Usuario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
     private String name;
     private String email;

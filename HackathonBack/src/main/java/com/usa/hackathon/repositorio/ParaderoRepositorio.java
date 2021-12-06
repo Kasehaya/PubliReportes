@@ -22,6 +22,8 @@ public class ParaderoRepositorio {
         return paraderoCrudRepositorio.findById(idParadero);
     }
 
-
+    public Paradero guardarParadero(Paradero paradero) {
+        return paraderoCrudRepositorio.save(paradero);
+    }
 
 }

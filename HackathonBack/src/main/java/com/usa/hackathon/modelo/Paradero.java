@@ -1,7 +1,10 @@
 package com.usa.hackathon.modelo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "paradero")
@@ -12,6 +15,10 @@ public class Paradero {
     private Integer idParadero;
     private String nombre;
     private String nemotecnica;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "paradero")
+    @JsonIgnoreProperties({"paradero"})
+    private List<ParaderoRuta> paraderoRutas;
 
     public Integer getIdParadero() {
         return idParadero;

@@ -1,7 +1,5 @@
 package com.usa.hackathon.modelo;
 
-import java.util.Date;
-
 public class OpinionCompleta {
 
     private int idUsuario;

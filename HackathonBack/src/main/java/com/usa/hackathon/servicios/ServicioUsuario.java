@@ -82,10 +82,8 @@ public class ServicioUsuario {
         if (usuario.getIdUsuario() != null) {
             Optional<Usuario> u = usuarioRepositorio.getUsuario(usuario.getIdUsuario());
             if (!u.isEmpty()) {
-                if (usuario.getEstado() == "Activo") {
+                if (usuario.getEstado().equals("Activo")) {
                     u.get().setEstado("Inactivo");
-                } else {
-                    u.get().setEstado("Activo");
                 }
                 usuarioRepositorio.guardar(u.get());
                 return u.get();

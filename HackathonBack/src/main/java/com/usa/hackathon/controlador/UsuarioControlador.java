@@ -40,7 +40,7 @@ public class UsuarioControlador {
         return servicioUsuario.actualizar(usuario);
     }
 
-    @PutMapping("/updateEstado")
+    @PutMapping("/updateestado")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario actualizarEstado(@RequestBody Usuario usuario) {
         return servicioUsuario.actualizarEstado(usuario);

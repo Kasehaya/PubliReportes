@@ -1,16 +1,22 @@
 package com.usa.hackathon.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "transporte")
 public class Transporte {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTransporte;
     private String nombre;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "transporte")
+    @JsonIgnoreProperties({"transporte"})
+    private List<Ruta> rutas;
 
     public Integer getIdTransporte() {
         return idTransporte;
@@ -26,5 +32,13 @@ public class Transporte {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Ruta> getRutas() {
+        return rutas;
+    }
+
+    public void setRutas(List<Ruta> rutas) {
+        this.rutas = rutas;
     }
 }

@@ -26,8 +26,4 @@ public class UsuarioRepositorio {
         return usuarioCrudRepositorio.save(usuario);
     }
 
-    public void borrar(Usuario usuario) {
-        usuarioCrudRepositorio.delete(usuario);
-    }
-
 }
