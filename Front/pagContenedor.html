@@ -1,85 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html class="html__responsive">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/pagContenedor.js"></script>
-<link rel="stylesheet" href="CSS/estilo.css" media="all"></head>
-<body onload="">
-    <div class="container" style="width: 100%;height: 100px; background-color: blue;">
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" style="margin-left: 5%;" fill="currentColor" class="bi bi-columns-gap" viewBox="0 0 16 16">
-            <path d="M6 1v3H1V1h5zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12v3h-5v-3h5zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8v7H1V8h5zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6v7h-5V1h5zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"/>
-          </svg>
-
-        <label for="text" style="margin-left: 5%;" id="top">Bienvenido </label>
+    <script src="js/index.js"></script>
+<link rel="stylesheet" href="SCSS/estilos.css" media="all"></head>
+<body onload="nombreUs()" style="font-family: Arial, Helvetica, sans-serif;">
+    <div class="p-3 bd-blue-100" style="height: 9%; width: 100%;">
+      <div class="p-3">
+        <br>
+        
+        <img src="/Front/img/Logo3.png" alt="porongaaaa" width="20%" height="20%">
+      
+        <label for="text" style="margin-left: 5%; color: white;" id="top"><div id="identificacionUsuario"></div></label>
           
         <div class="btn-group" role="group" style="float: right;">
-            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Actualizar Datos
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <li><a class="dropdown-item" href="#">Actualizar sus datos</a></li>
-              <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
+          <button type="button" class="btn bd-blue-400 btn-lg" onclick="Salir()">Salir</button>
           </div>
     </div>
-    
-    <div align = "center" class="container-fluid" style="min-height: 400px;background-color: blueviolet;" >
-    <div class="formulario" style="width: 70%;height: auto;margin-top: 5% ; background-color: black;">
-        <div id="menu" style="width: 20%; height: 400px; background-color: aquamarine; float: left; border-bottom-left-radius: 10%;border-top-left-radius: 10%;">
-            <table class="table center" style="margin-top: 30%;">
-                <thead>
-                 
-                    
-                  <tr>
-                    <th><a class="dropdown-item" onclick="pagComentarios()"><b>Crear Ruta</b> </a></th>
-                    
-                  </tr>
-                  
-                  <tr>
-                    <th><a class="dropdown-item" onclick="pagComentarios()"><b>Rutas</b> </a></th>
-                    
-                  </tr>
+  </div>  
+
+
   
-                  <tr>
-                    <th><a class="dropdown-item" onclick="pagComentarios()"><b>Ver Comentarios</b> </a></th>
-                    
-                  </tr>
-                 
-                  <tr>
-                    <th><a class="dropdown-item" onclick="pagVerComentarios()"><b>Dejar un Comentario</b> </a></th>
-                    
-                  </tr>
-                 
-                  <tr>
-                        <th><a class="dropdown-item" onclick="pagComentarios()"><b>Another action</b> </a></th>
-                        
-                      </tr>
-
-                  <tr>
-                    <th><a class="dropdown-item" onclick="pagComentarios()"><b>Another action</b> </a></th>
-                    
-                  </tr>
-                </thead>
-               
-              </table>
-
-              
+    <div align = "center" class="container-fluid" style="min-height: 400px; width: 100%; margin-top: 3%; height: auto;" >
+    
+      <div style="width: 60%;"><ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" onclick="pagCrearRutas()"  id="menu1">Crear ruta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick = "pagRutas()" id="menu2">Rutas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick = "pagComentarios()" id="menu3">Crear comentario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="pagVerComentarios()" id="menu4">Ver Comentarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="pagCrearTransporte()">Crear Transporte</a>
+        </li>
+      </ul>
     </div>
     
-    <div>
-        <div id="contenedorPag" style="width: 80%; height:auto; min-height: 400px; background-color: aqua; float: right; border-bottom-right-radius: 7%; border-top-right-radius: 7% ;" >
-           <div align = "left" id="cont"></div>
-        </div>
-        
-    </div>
 
-    
+
+<div align="left"  class="card bd-blue-100" style="width: 80%; border-radius: 15%;" id="contain">
+  <center>
+  <div class="card-body bd-blue-300" id="containerPag" style="padding: 5%; margin: 1%; border-radius: 15%; color: black;">
+    <img src="/Front/img/Logo3.png" alt="porongaaaa" width="40%" height="40%">
+    <h1 class="card-title"><center> Bienvenido a PubiReportes</center></h1>
+    <p class="card-text">Para iniciar por favor selecciona alguna de las opciones disponibles</p>
+
+  </div>
+</center>
 </div>
 
-      <script src="bootstrap/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+
+<!--Modal Modificacion-->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br><br>
+      <script src="/Front/bin/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="/Front/bin/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>

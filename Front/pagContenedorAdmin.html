@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="html__responsive">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/pagContenedor.js"></script>
+<link rel="stylesheet" href="SCSS/estilos.css" media="all"></head>
+<body onload="" style="font-family: Arial, Helvetica, sans-serif;">
+    <div class="p-3 bd-blue-100" style="height: 9%; width: 100%;">
+      <div class="p-3">
+        <br>
+        
+        <img src="/Front/img/Logo3.png" alt="porongaaaa" width="20%" height="20%">
+      
+        <label for="text" style="margin-left: 5%; color: white;" id="top"><div id="identificacionUsuario">Bienvenido Usuario</div></label>
+          
+        <div class="btn-group" role="group" style="float: right;">
+            <button id="btnGroupDrop1" type="button" class="btn bd-blue-400 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Actualizar Datos
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <li>
+              <button type="button" class="btn btn-menuDropDown" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Modificar Datos
+              </button>
+              </li>
+              <li><button type="button" class="btn btn-menuDropDown" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Salir
+              </button>
+            </li>
+            </ul>
+          </div>
+    </div>
+  </div>  
+
+<!--Menu-->
+  
+    <div align = "center" class="container-fluid" style="min-height: 400px; width: 100%; margin-top: 3%; height: auto;" >
+    
+      <div style="width: 80%;"><ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" onclick="pagCrearRutas()"  id="menu1">Crear ruta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick = "pagRutas()" id="menu2">Rutas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick = "pagComentarios()" id="menu3">Crear comentario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="pagVerComentarios()" id="menu4">Ver Comentarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="pagUsuarios()" id="menu5">Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" onclick="pagInhabilitar()" id="menu6">Inhabilitar Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" onclick="pagActualizar()" id="menu7">Actualizar Usuarios</a>
+        </li>
+      </ul>
+    </div>
+    
+
+
+<div align="left"  class="card bd-blue-100" style="width: 80%; border-radius: 15%;" id="contain">
+  <center>
+  <div class="card-body bd-blue-300" id="containerPag" style="padding: 5%; margin: 1%; border-radius: 15%; color: black;">
+    <img src="/Front/img/Logo3.png" alt="porongaaaa" width="40%" height="40%">
+    <h1 class="card-title"><center> Bienvenido a PubiReportes</center></h1>
+    <p class="card-text">Para iniciar por favor selecciona alguna de las opciones disponibles</p>
+
+  </div>
+</center>
+</div>
+
+
+<!--Modal Modificacion-->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br><br>
+      <script src="/Front/bin/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="/Front/bin/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

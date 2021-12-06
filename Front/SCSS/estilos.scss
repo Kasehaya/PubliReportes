@@ -1,0 +1,45 @@
+/////////////////////////////////////
+///////// COLORES////////////////////
+////////////////////////////////////@at-root
+
+//$principal : 
+
+$primary: #6610f2;
+
+
+@import "../bin/bootstrap/scss/bootstrap";
+
+.bd-blue-100{
+
+    
+    background-color: #031633;
+
+}
+
+.bd-blue-200{
+
+    color: #fff;
+    background-color: #0a58ca;
+
+}
+
+.bd-blue-300{
+
+    color: #fff;
+    background-color: #cfe2ff;
+
+}
+
+.bd-blue-400{
+
+    color: #fff;
+    background-color: #0a58ca;
+
+}
+
+.menuDropDown{
+
+    color: #fff;
+    background-color: #f8f9fa;
+
+}

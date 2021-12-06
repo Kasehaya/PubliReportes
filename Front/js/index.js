@@ -34,7 +34,7 @@ function validarVacios(){
     let localidadC = document.getElementById("Localidad")
     let ocupacionC = document.getElementById("Ocupacion")
     let AlertaContraseña = document.getElementById("AlertaContraseña")
-    let AlertClase = document.getElementsByClassName("")
+    let AlertClase = document.getElementsByClassName("AlertaCrear")
     let AlertaEdad = document.getElementById("AlertaEdad")
     let AlertaCedula = document.getElementById("AlertaCedula")
     let AlertaEmail = document.getElementById("AlertaEmail")
@@ -253,7 +253,7 @@ function validarVacios(){
             AlertaEdad.style.display="inline"
             }
 
-        if(AlertClase.length = 0){
+        if(AlertClase.value == null){
 
         let alertaCrear = document.getElementById("AlertaCrear")
         alertaCrear.innerHTML="";
@@ -291,7 +291,7 @@ function validarVaciosLog(){
 
     }
 }
-    
+    var datosjson
 function ingreso(){
 
     let email = $("#email").val();
@@ -300,7 +300,7 @@ function ingreso(){
 
     $.ajax({    
 
-        url: 'http://localhost:8080/api/Usuarios/all',
+        url: 'http://localhost:8080/api/usuarios/all',
         
         type: 'GET',
         dataType : 'JSON',
@@ -308,13 +308,19 @@ function ingreso(){
         
         
         success : function(json, textStatus, xhr) {
-            
+            console.log(json)
+            datosjson = json;
             for(i = 0; i< json.length; i++){
                 
-                if(email == json.email[i] ){
-                    if(contraseña == json.contraseña[i]){
-                        location.href= "http://localhost:8080/pagPrueba.html"
-                        
+                if(email == json[i].email ){
+                    if(contraseña == json[i].contraseña){
+                        location.href= "http://127.0.0.1:8887/Front/pagContenedor.html";
+                        idUsuario = json[i].idUsuario;
+                        name = json[i].name;
+                        rol = json[i].rol;
+                        localStorage.setItem('ident', idUsuario);
+                        localStorage.setItem('name', name);
+                        localStorage.setItem('rol', rol);
                     }
 
                 }
@@ -331,6 +337,8 @@ function ingreso(){
 }
 
 function guardarUsuario(){
+
+    console.log("se ejecuta guardar")
     let edad= $("#Edad").val()
     
     let fechaDeNacimiento = new Date(edad);
@@ -339,11 +347,11 @@ function guardarUsuario(){
     
 
     let var2 = {
-        cedula: $("#CedulaC").val(),
-        nombre: $("#NombreC").val(),
+        idUsuario: $("#CedulaC").val(),
+        name: $("#NombreC").val(),
         email: $("#EmailC").val(),
-        direccion: $("#DireccionC").val(),
         contraseña: $("#contraseñaC").val(),
+        direccion: $("#DireccionC").val(),
         edad: edadN,
         sexo: $("#Sexo").val(),
         localidad: $("#Localidad").val(),
@@ -356,7 +364,7 @@ function guardarUsuario(){
         contentType:"application/json; charset=utf-8",
         dataType: 'JSON',
         data: JSON.stringify(var2),
-        url:"http://localhost:8080/api/Usuarios/new",
+        url:"http://localhost:8080/api/usuarios/save",
         success:function() {
             alert("Guardó correctamente");
                 let modal = document.getElementById("staticBackdrop");

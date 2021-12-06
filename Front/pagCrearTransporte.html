@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html class="html__responsive">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/pagContenedor.js"></script>
+<link rel="stylesheet" href="SCSS/estilos.css" media="all"></head>
+<body onload="nombreUs()" style="font-family: Arial, Helvetica, sans-serif;">
+    <div align="left" class="container-fluid" style="width: 80%;">
+        <br>
+        <div id="alertaTransporte"></div>
+
+        <label for="exampleFormControlTextarea1" class="form-label" style="color: black;" >Para agregar un transporte, escriba el nombre y de click en Guardar</label>
+
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label" style="color: black;" >Opinion</label>
+          <textarea class="form-control"  rows="3" id="Transporte"></textarea>
+        </div>
+       
+          <br>
+          <button type="button" class="btn bd-blue-400" onclick="verificarVaciosT()">Guardar Transporte</button>
+       
+    </div>
+      <script src="/Front/bin/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="/Front/bin/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

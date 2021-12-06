@@ -2,7 +2,7 @@ function cargarTabla(){
 
     $.ajax({    
 
-        url: 'http://localhost:8080/api/Usuarios/all',
+        url: 'http://localhost:8080/api/usuarios/all',
         
         type: 'GET',
         dataType : 'JSON',
