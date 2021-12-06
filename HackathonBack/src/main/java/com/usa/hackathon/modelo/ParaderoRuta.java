@@ -3,10 +3,11 @@ package com.usa.hackathon.modelo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "paraderoruta")
-public class ParaderoRuta {
+public class ParaderoRuta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

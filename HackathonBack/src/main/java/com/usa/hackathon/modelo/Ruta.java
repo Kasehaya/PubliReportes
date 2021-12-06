@@ -4,11 +4,12 @@ package com.usa.hackathon.modelo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "ruta")
-public class Ruta {
+public class Ruta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +18,7 @@ public class Ruta {
 
     @ManyToOne
     @JoinColumn(name = "idTransporte")
-    @JsonIgnoreProperties({"ruta"})
+    @JsonIgnoreProperties({"ruta", "transporte"})
     private Transporte transporte;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "ruta")
